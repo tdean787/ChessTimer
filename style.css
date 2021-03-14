@@ -1,0 +1,42 @@
+.container {
+  display: grid;
+  align-content: center;
+  justify-content: center;
+  grid-template-rows: 1fr 1fr;
+  height: 100%;
+}
+
+html {
+  height: 100vh;
+}
+
+body {
+  height: 100%;
+}
+
+.block {
+  width: 100vw;
+  display: block;
+}
+
+.black-block {
+  background-color: black;
+  color: white;
+  height: 100%;
+}
+
+.white-align {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+  text-align: center;
+}
+
+.black-align {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+  text-align: center;
+}
