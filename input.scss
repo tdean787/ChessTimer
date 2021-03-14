@@ -2,8 +2,20 @@
   display: grid;
   align-content: center;
   justify-content: center;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 4fr 70px 4fr;
   height: 100%;
+
+  .timer-controls {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    background-color: #f1f1f1;
+    i {
+      line-height: 70px;
+      padding: 0 20px;
+      cursor: pointer;
+    }
+  }
 }
 
 html {

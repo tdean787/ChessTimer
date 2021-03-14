@@ -7,21 +7,23 @@ const blackTimerOutput = document.querySelector("#black-timer-output");
 // const blackButton = document.querySelector("#black-button");
 const blackBlock = document.querySelector(".black-block");
 const whiteBlock = document.querySelector(".white-block");
+const playIcon = document.querySelector(".fa-play");
+const pauseIcon = document.querySelector(".fa-pause");
+const redoIcon = document.querySelector(".fa-redo");
 
 let turn = undefined;
-
-// console.log(localStorage.getItem("timeControl"));
 
 whiteTimerOutput.innerHTML = `${localStorage.getItem("timeControl")}:00`;
 blackTimerOutput.innerHTML = `${localStorage.getItem("timeControl")}:00`;
 
+//turn these into one factory function
 const whiteTimer = {
   defaultTime: localStorage.getItem("timeControl") * 60,
   timer: undefined,
   formattedTime: function () {
     var minutes = Math.floor(this.defaultTime / 60);
     var seconds = this.defaultTime % 60;
-    console.log(`${minutes}:${("0" + seconds).slice(-2)}`);
+    // console.log(`${minutes}:${("0" + seconds).slice(-2)}`);
     whiteTimerOutput.innerHTML = `${minutes}:${("0" + seconds).slice(-2)}`;
   },
   tick: function () {
@@ -29,36 +31,10 @@ const whiteTimer = {
     whiteTimer.formattedTime();
   },
 
-  //   play: function () {
-  //     whiteTimer.timer = setInterval(this.tick, 1000);
-  //   },
-
   pause: function () {
     clearTimeout(whiteTimer.timer);
   },
 };
-
-function whitePlay() {
-  if (turn == "black") {
-    return;
-  } else {
-    blackTimer.timer = setInterval(blackTimer.tick, 1000);
-    turn = "black";
-    whiteTimer.pause();
-    console.log(turn);
-  }
-}
-
-function blackPlay() {
-  if (turn == "white") {
-    return;
-  } else {
-    whiteTimer.timer = setInterval(whiteTimer.tick, 1000);
-    turn = "white";
-    blackTimer.pause();
-    console.log(turn);
-  }
-}
 
 const blackTimer = {
   defaultTime: localStorage.getItem("timeControl") * 60,
@@ -82,9 +58,47 @@ const blackTimer = {
     clearTimeout(blackTimer.timer);
   },
 };
-blackBlock.addEventListener("click", blackPlay);
-whiteBlock.addEventListener("click", whitePlay);
 
+function pauseTimers() {
+  clearTimeout(blackTimer.timer);
+  clearTimeout(whiteTimer.timer);
+}
+
+function redoTimers() {
+  clearTimeout(blackTimer.timer);
+  clearTimeout(whiteTimer.timer);
+  blackTimer.defaultTime = localStorage.getItem("timeControl") * 60;
+  whiteTimer.defaultTime = localStorage.getItem("timeControl") * 60;
+  whiteTimerOutput.innerHTML = `${localStorage.getItem("timeControl")}:00`;
+  blackTimerOutput.innerHTML = `${localStorage.getItem("timeControl")}:00`;
+  turn = "white";
+}
+function play() {
+  if (turn == "black") {
+    whiteTimer.timer = setInterval(whiteTimer.tick, 1000);
+    turn = "white";
+    blackTimer.pause();
+    console.log(turn);
+  } else {
+    blackTimer.timer = setInterval(blackTimer.tick, 1000);
+    turn = "black";
+    whiteTimer.pause();
+    console.log(turn);
+  }
+}
+
+// function blackPlay() {
+//   if (turn == "white") {
+//     return;
+//   } else {
+
+//   }
+// }
+
+blackBlock.addEventListener("click", play);
+whiteBlock.addEventListener("click", play);
+pauseIcon.addEventListener("click", pauseTimers);
+redoIcon.addEventListener("click", redoTimers);
 // whiteButton.addEventListener("click", whitePlay);
 // blackButton.addEventListener("click", blackPlay);
 // const Timer = (playerName, color) => {
