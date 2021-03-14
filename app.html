@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="style.css" type="text/css" />
+    <link rel="stylesheet" href="output.css" type="text/css" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Lora:wght@500&family=Roboto&display=swap"
@@ -12,21 +12,31 @@
     />
   </head>
   <body>
+    <a href="/index.html">
+      <button class="back-button">
+        <i class="fas fa-arrow-left fa-2x"></i>
+      </button>
+    </a>
+
     <section class="timer-container">
       <div class="white-block block">
         <div class="white-align">
-          <h1>White Timer: <span id="white-timer-output"></span></h1>
+          <h1>White: <span id="white-timer-output"></span></h1>
           <!-- <button id="white-button">White Turn End</button> -->
         </div>
       </div>
       <div class="black-block block">
         <div class="black-align">
-          <h1>Black Timer: <span id="black-timer-output"></span></h1>
+          <h1>Black: <span id="black-timer-output"></span></h1>
           <!-- <button id="black-button">Black Turn End</button> -->
         </div>
       </div>
     </section>
     <script src="script.js" async></script>
+    <script
+      src="https://kit.fontawesome.com/0e1ea99480.js"
+      crossorigin="anonymous"
+    ></script>
     <!-- <script type="module" src="time.js"></script> -->
   </body>
 </html>

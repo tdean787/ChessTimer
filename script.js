@@ -66,7 +66,7 @@ const blackTimer = {
   formattedTime: function () {
     var minutes = Math.floor(this.defaultTime / 60);
     var seconds = this.defaultTime % 60;
-    console.log(`${minutes}:${("0" + seconds).slice(-2)}`);
+    // console.log(`${minutes}:${("0" + seconds).slice(-2)}`);
     blackTimerOutput.innerHTML = `${minutes}:${("0" + seconds).slice(-2)}`;
   },
   tick: function () {
