@@ -1,3 +1,6 @@
+//TODO: add logic to check that timer is at 0 and game is over
+//TODOD: implement time controls with increment
+
 const whiteTimerOutput = document.querySelector("#white-timer-output");
 const blackTimerOutput = document.querySelector("#black-timer-output");
 // const whiteButton = document.querySelector("#white-button");
