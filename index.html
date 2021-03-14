@@ -3,22 +3,34 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chess Timer</title>
+    <title>Time Controls</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:wght@500&family=Roboto&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <h2>Choose your Time Control</h2>
+    <div class="bg">
+      <div class="container">
+        <div class="time-control-title">
+          <h2>Choose your Time Control</h2>
+        </div>
 
-    <div class="form-group">
-      <select class="form-control" id="timeControlSelect">
-        <option value="5">5 Minutes</option>
-        <option value="10">10 Minutes</option>
-        <option value="30">30 Minutes</option>
-      </select>
+        <div class="form-group">
+          <select class="select-css" id="timeControlSelect">
+            <option value="5">5 Minutes</option>
+            <option value="10">10 Minutes</option>
+            <option value="30">30 Minutes</option>
+          </select>
+        </div>
+        <a id="set-time" href="./app.html">
+          <button class="btn">Set Controls and go to timer</button>
+        </a>
+        <h6>Photo by Deva Darshan from Pexels</h6>
+      </div>
     </div>
-    <a id="set-time" href="./app.html">
-      <button>Set Controls and go to timer</button>
-    </a>
-
     <!-- <script type="module" src="script.js"></script> -->
     <script src="time.js" async></script>
   </body>
