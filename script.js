@@ -1,21 +1,19 @@
 const whiteTimerOutput = document.querySelector("#white-timer-output");
 const blackTimerOutput = document.querySelector("#black-timer-output");
-const whiteButton = document.querySelector("#white-button");
-const blackButton = document.querySelector("#black-button");
+// const whiteButton = document.querySelector("#white-button");
+// const blackButton = document.querySelector("#black-button");
 const blackBlock = document.querySelector(".black-block");
 const whiteBlock = document.querySelector(".white-block");
 
-function working() {
-  console.log("prop");
-}
-
 let turn = undefined;
 
-whiteTimerOutput.innerHTML = "10:00";
-blackTimerOutput.innerHTML = "10:00";
+// console.log(localStorage.getItem("timeControl"));
+
+whiteTimerOutput.innerHTML = `${localStorage.getItem("timeControl")}:00`;
+blackTimerOutput.innerHTML = `${localStorage.getItem("timeControl")}:00`;
 
 const whiteTimer = {
-  defaultTime: 10 * 60,
+  defaultTime: localStorage.getItem("timeControl") * 60,
   timer: undefined,
   formattedTime: function () {
     var minutes = Math.floor(this.defaultTime / 60);
@@ -60,7 +58,7 @@ function blackPlay() {
 }
 
 const blackTimer = {
-  defaultTime: 10 * 60,
+  defaultTime: localStorage.getItem("timeControl") * 60,
   timer: undefined,
   formattedTime: function () {
     var minutes = Math.floor(this.defaultTime / 60);
