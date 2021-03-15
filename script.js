@@ -3,8 +3,6 @@
 
 const whiteTimerOutput = document.querySelector("#white-timer-output");
 const blackTimerOutput = document.querySelector("#black-timer-output");
-// const whiteButton = document.querySelector("#white-button");
-// const blackButton = document.querySelector("#black-button");
 const blackBlock = document.querySelector(".black-block");
 const whiteBlock = document.querySelector(".white-block");
 const playIcon = document.querySelector(".fa-play");
@@ -27,7 +25,12 @@ const whiteTimer = {
     whiteTimerOutput.innerHTML = `${minutes}:${("0" + seconds).slice(-2)}`;
   },
   tick: function () {
-    whiteTimer.defaultTime -= 1;
+    if (whiteTimer.defaultTime == 0) {
+      clearInterval(whiteTimer.timer);
+      alert("black wins on time");
+    } else {
+      whiteTimer.defaultTime -= 1;
+    }
     whiteTimer.formattedTime();
   },
 
@@ -46,7 +49,12 @@ const blackTimer = {
     blackTimerOutput.innerHTML = `${minutes}:${("0" + seconds).slice(-2)}`;
   },
   tick: function () {
-    blackTimer.defaultTime -= 1;
+    if (blackTimer.defaultTime == 0) {
+      clearInterval(blackTimer.timer);
+      alert("white wins on time");
+    } else {
+      blackTimer.defaultTime -= 1;
+    }
     blackTimer.formattedTime();
   },
 
@@ -73,6 +81,7 @@ function redoTimers() {
   blackTimerOutput.innerHTML = `${localStorage.getItem("timeControl")}:00`;
   turn = "white";
 }
+
 function play() {
   if (turn == "black") {
     whiteTimer.timer = setInterval(whiteTimer.tick, 1000);
@@ -86,43 +95,13 @@ function play() {
     console.log(turn);
   }
 }
+//the below should check for a game ended on time
+// if (whiteTimer.defaultTime == 0) {
+//   alert("Black wins on time");
+// } else if (blackTimer.defaultTime == 0) {
+//   alert("White wins on time");
+// } else blackBlock.addEventListener("click", play);
 
-// function blackPlay() {
-//   if (turn == "white") {
-//     return;
-//   } else {
-
-//   }
-// }
-
-blackBlock.addEventListener("click", play);
 whiteBlock.addEventListener("click", play);
 pauseIcon.addEventListener("click", pauseTimers);
 redoIcon.addEventListener("click", redoTimers);
-// whiteButton.addEventListener("click", whitePlay);
-// blackButton.addEventListener("click", blackPlay);
-// const Timer = (playerName, color) => {
-//   const defaultTime = 10 * 60;
-//   const timer = undefined;
-
-//   const tick = function () {
-//     // defaultTime = defaultTime - 1;
-//     console.log(defaultTime);
-//     formattedTime();
-//   };
-
-//   const play = function () {
-//     this.timer = setInterval(this.tick, 1000);
-//   };
-
-//   const pause = function () {
-//     clearTimeout(this.timer);
-//   };
-
-//   this.playerName = playerName;
-//   this.color = color;
-//   return { timer, playerName, color, formattedTime, play, tick, pause };
-// };
-
-// const Taylor = Timer("Taylor", "white");
-// const Ciara = Timer("Ciara", "black");
