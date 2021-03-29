@@ -9,7 +9,7 @@ const playIcon = document.querySelector(".fa-play");
 const pauseIcon = document.querySelector(".fa-pause");
 const redoIcon = document.querySelector(".fa-redo");
 
-let turn = undefined;
+let turn = "white";
 
 whiteTimerOutput.innerHTML = `${localStorage.getItem("timeControl")}:00`;
 blackTimerOutput.innerHTML = `${localStorage.getItem("timeControl")}:00`;
@@ -58,10 +58,6 @@ const blackTimer = {
     blackTimer.formattedTime();
   },
 
-  //   play: function () {
-  //     blackTimer.timer = setInterval(this.tick, 1000);
-  //   },
-
   pause: function () {
     clearTimeout(blackTimer.timer);
   },
@@ -95,13 +91,8 @@ function play() {
     console.log(turn);
   }
 }
-//the below should check for a game ended on time
-// if (whiteTimer.defaultTime == 0) {
-//   alert("Black wins on time");
-// } else if (blackTimer.defaultTime == 0) {
-//   alert("White wins on time");
-// } else blackBlock.addEventListener("click", play);
 
 whiteBlock.addEventListener("click", play);
+blackBlock.addEventListener("click", play)
 pauseIcon.addEventListener("click", pauseTimers);
 redoIcon.addEventListener("click", redoTimers);
